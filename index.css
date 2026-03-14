@@ -74,7 +74,30 @@
     @apply bg-background text-foreground antialiased font-body;
   }
 
+  html,
+  body {
+    height: 100%;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    scroll-behavior: smooth;
+    
+    scroll-snap-type: y proximity;
+  }
+
   .ecovolt-section {
-    @apply mx-auto w-full max-w-[1200px] px-4 md:px-6;
+    @apply mx-auto w-full max-w-full px-4 md:px-6;
+  }
+
+  .snap-section {
+    scroll-margin-top: 60px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html,
+    body {
+      scroll-behavior: auto;
+    }
   }
 }

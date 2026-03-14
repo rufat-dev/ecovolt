@@ -12,15 +12,29 @@ const Index = () => {
   const [lang, setLang] = useState<"en" | "az">("en");
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground  ">
       <Header lang={lang} setLang={setLang} />
-      <HeroSection lang={lang} />
-      <StatsSection lang={lang} />
-      <WhyItMattersSection lang={lang} />
-      <CampusMap lang={lang} />
-      <ProcessSection lang={lang} />
-      <CTASection lang={lang} />
-      <FooterSection lang={lang} />
+      <div className="snap-section">
+        <HeroSection lang={lang} />
+      </div>
+      <div className="snap-section">
+        <StatsSection lang={lang} />
+      </div>
+      <div className="snap-section">
+        <WhyItMattersSection lang={lang} />
+      </div>
+      <div className="snap-section">
+        <CampusMap lang={lang} />
+      </div>
+      <div className="snap-section">
+        <ProcessSection lang={lang} />
+      </div>
+      <div className="snap-section">
+        <CTASection lang={lang} />
+      </div>
+      <div className="snap-section">
+        <FooterSection lang={lang} />
+      </div>
     </div>
   );
 };

@@ -13,9 +13,9 @@ const HeroSection = ({ lang }: HeroSectionProps) => {
   };
 
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center ecovolt-section overflow-hidden">
+    <section className="relative mx-0 flex min-h-screen flex-col items-center justify-center ecovolt-section w-full overflow-hidden">
       {/* Background image with overlay */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 w-full">
         <img src={heroBg} alt="" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-background/65" />
       </div>

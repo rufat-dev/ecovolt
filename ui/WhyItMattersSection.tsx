@@ -7,6 +7,24 @@ interface WhyItMattersSectionProps {
   lang: "en" | "az";
 }
 
+const factCardsContainerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const factCardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 },
+  },
+};
+
 const facts = {
   en: [
     {
@@ -128,15 +146,18 @@ const WhyItMattersSection = ({ lang }: WhyItMattersSectionProps) => {
       </div>
 
       {/* Facts grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
-        {facts[lang].map((fact, i) => (
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto"
+        variants={factCardsContainerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        {facts[lang].map((fact) => (
           <motion.div
-            key={i}
-            className="p-6 rounded-2xl bg-primary/[0.04] border border-primary/10 hover:bg-primary/[0.08] transition-all hover:shadow-lg group"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.1, duration: 0.5 }}
-            viewport={{ once: true }}
+            key={fact.title}
+            className="p-6 rounded-2xl bg-primary/[0.04] border border-primary/10 hover:bg-primary/[0.08] transition-colors duration-300 hover:shadow-lg group will-change-transform"
+            variants={factCardVariants}
           >
             <div className="w-10 h-10 rounded-xl bg-accent/15 flex items-center justify-center mb-4 group-hover:bg-accent/25 transition-colors">
               <fact.icon className="w-5 h-5 text-accent" />
@@ -145,7 +166,7 @@ const WhyItMattersSection = ({ lang }: WhyItMattersSectionProps) => {
             <p className="text-muted-foreground text-sm leading-relaxed">{fact.desc}</p>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };

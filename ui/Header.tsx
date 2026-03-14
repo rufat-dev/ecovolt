@@ -19,7 +19,7 @@ const Header = ({ lang, setLang }: HeaderProps) => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="ecovolt-section flex items-center justify-between py-3">
+      <div className=" px-[5%] h-[60px] ecovolt-section flex items-center justify-between py-3">
         <div className="flex items-center gap-3">
           <img src={ecovoltLogo} alt="EcoVolt" className="h-7" />
         </div>

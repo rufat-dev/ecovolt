@@ -8,24 +8,52 @@ interface StatsSectionProps {
   lang: "en" | "az";
 }
 
+const statCardsContainerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const statCardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7 },
+  },
+};
+
 const AnimatedNumber = ({ target, suffix = "" }: { target: number; suffix?: string }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const [count, setCount] = useState(0);
+  const SMALL_TARGET_THRESHOLD = 20;
 
   useEffect(() => {
     if (!isInView) return;
     let start = 0;
-    const duration = 1500;
+    const isSmallTarget = target <= SMALL_TARGET_THRESHOLD;
+    const duration = isSmallTarget ? 900 : 1500;
+
     const step = (timestamp: number) => {
       if (!start) start = timestamp;
       const progress = Math.min((timestamp - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * target));
+
+      if (isSmallTarget) {
+        // For small targets, linear increments feel clearer than easing jumps.
+        setCount(Math.round(progress * target));
+      } else {
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setCount(Math.floor(eased * target));
+      }
+
       if (progress < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
-  }, [isInView, target]);
+  }, [isInView, target, SMALL_TARGET_THRESHOLD]);
 
   return (
     <span ref={ref} className="font-display text-4xl md:text-5xl font-bold">
@@ -98,8 +126,8 @@ const StatsSection = ({ lang }: StatsSectionProps) => {
       ];
 
   return (
-    <section id="stats" className="ecovolt-section py-16">
-      <div className="max-w-6xl mx-auto">
+    <section id="stats" className="ecovolt-section py-16 max-w-[1200px]">
+      <div className="w-full mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-12">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -135,15 +163,18 @@ const StatsSection = ({ lang }: StatsSectionProps) => {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <motion.div
+          className="grid grid-cols-2 lg:grid-cols-4 gap-4"
+          variants={statCardsContainerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {stats.map((stat, i) => (
             <motion.div
-              key={i}
-              className="p-6 rounded-2xl bg-primary/[0.04] border border-primary/10 hover:bg-primary/[0.08] transition-all group"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
-              viewport={{ once: true }}
+              key={stat.label}
+              className="p-6 rounded-2xl bg-primary/[0.04] border border-primary/10 hover:bg-primary/[0.08] transition-colors duration-300 group will-change-transform"
+              variants={statCardVariants}
             >
               <stat.icon className="w-6 h-6 text-accent mb-3" />
               <AnimatedNumber target={stat.number} suffix={stat.suffix} />
@@ -151,7 +182,7 @@ const StatsSection = ({ lang }: StatsSectionProps) => {
               <p className="text-muted-foreground text-xs mt-2 leading-relaxed">{stat.desc}</p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
