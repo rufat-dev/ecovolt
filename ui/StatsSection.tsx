@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { Battery, MapPin, Handshake, Building2, ArrowRight } from "lucide-react";
 import heroBg1 from "@/assets/hero-bg-1.jpg";
+import { STATS_VALUES } from "@/data/siteMetrics";
 
 interface StatsSectionProps {
   lang: "en" | "az";
@@ -36,16 +37,64 @@ const AnimatedNumber = ({ target, suffix = "" }: { target: number; suffix?: stri
 const StatsSection = ({ lang }: StatsSectionProps) => {
   const stats = lang === "en"
     ? [
-        { icon: Battery, number: 0, suffix: "+", label: "Batteries Collected", desc: "Across all campus collection points in the first pilot month" },
-        { icon: MapPin, number: 10, suffix: "", label: "Collection Points", desc: "Strategically placed in high-traffic campus buildings" },
-        { icon: Handshake, number: 2, suffix: "", label: "Strategic Partners", desc: "Ministry of Ecology & Natural Resources and Red Hearts" },
-        { icon: Building2, number: 5, suffix: "", label: "Campus Buildings", desc: "Covered by our campus-wide collection network" },
+        {
+          icon: Battery,
+          number: STATS_VALUES.batteriesCollected,
+          suffix: "+",
+          label: "Batteries Collected",
+          desc: "Across all campus collection points in the first pilot month",
+        },
+        {
+          icon: MapPin,
+          number: STATS_VALUES.collectionPoints,
+          suffix: "",
+          label: "Collection Points",
+          desc: "Strategically placed in high-traffic campus buildings",
+        },
+        {
+          icon: Handshake,
+          number: STATS_VALUES.strategicPartners,
+          suffix: "",
+          label: "Strategic Partners",
+          desc: "Ministry of Ecology & Natural Resources and Red Hearts",
+        },
+        {
+          icon: Building2,
+          number: STATS_VALUES.campusBuildingsCovered,
+          suffix: "",
+          label: "Campus Buildings",
+          desc: "Covered by our campus-wide collection network",
+        },
       ]
     : [
-        { icon: Battery, number: 0, suffix: "+", label: "Toplanmış Batareyalar", desc: "İlk pilot ayında bütün toplama nöqtələrindən" },
-        { icon: MapPin, number: 10, suffix: "", label: "Toplama Nöqtəsi", desc: "Yüksək trafikli kampus binalarında strateji yerləşdirmə" },
-        { icon: Handshake, number: 2, suffix: "", label: "Strateji Tərəfdaş", desc: "Ekologiya Nazirliyi və Red Hearts" },
-        { icon: Building2, number: 5, suffix: "", label: "Kampus Binası", desc: "Kampus boyu toplama şəbəkəsi ilə əhatə olunur" },
+        {
+          icon: Battery,
+          number: STATS_VALUES.batteriesCollected,
+          suffix: "+",
+          label: "Toplanmış Batareyalar",
+          desc: "İlk pilot ayında bütün toplama nöqtələrindən",
+        },
+        {
+          icon: MapPin,
+          number: STATS_VALUES.collectionPoints,
+          suffix: "",
+          label: "Toplama Nöqtəsi",
+          desc: "Yüksək trafikli kampus binalarında strateji yerləşdirmə",
+        },
+        {
+          icon: Handshake,
+          number: STATS_VALUES.strategicPartners,
+          suffix: "",
+          label: "Strateji Tərəfdaş",
+          desc: "Ekologiya Nazirliyi və Red Hearts",
+        },
+        {
+          icon: Building2,
+          number: STATS_VALUES.campusBuildingsCovered,
+          suffix: "",
+          label: "Kampus Binası",
+          desc: "Kampus boyu toplama şəbəkəsi ilə əhatə olunur",
+        },
       ];
 
   return (
