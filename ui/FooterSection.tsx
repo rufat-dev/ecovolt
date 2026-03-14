@@ -19,7 +19,7 @@ const FooterSection = ({ lang }: FooterSectionProps) => {
           <span>·</span>
           <span>{lang === "en" ? "Haji Zeynalabdin Awards" : "Hacı Zeynalabdin Mükafatları"}</span>
           <span>·</span>
-          <a href="mailto:ecovolt@ada.edu.az" className="hover:text-foreground transition-colors">ecovolt@ada.edu.az</a>
+          <a href="mailto:rmammadov17936@ada.edu.az" className="hover:text-foreground transition-colors">rmammadov17936@ada.edu.az</a>
         </div>
       </div>
     </footer>

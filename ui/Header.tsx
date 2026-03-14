@@ -44,9 +44,9 @@ const Header = ({ lang, setLang }: HeaderProps) => {
 
         <div className="flex items-center gap-3">
           <div className="hidden lg:flex items-center gap-4 text-xs text-muted-foreground mr-4">
-            <a href="mailto:ecovolt@ada.edu.az" className="flex items-center gap-1 hover:text-foreground transition-colors">
+            <a href="mailto:rmammadov17936@ada.edu.az" className="flex items-center gap-1 hover:text-foreground transition-colors">
               <Mail className="w-3 h-3" />
-              ecovolt@ada.edu.az
+              rmammadov17936@ada.edu.az
             </a>
           </div>
 

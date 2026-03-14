@@ -44,7 +44,7 @@ const CTASection = ({ lang }: CTASectionProps) => {
               <div className="w-8 h-8 rounded-xl bg-accent/15 flex items-center justify-center">
                 <Mail className="w-4 h-4 text-accent" />
               </div>
-              <span>ecovolt@ada.edu.az</span>
+              <a href="mailto:rmammadov17936@ada.edu.az" >rmammadov17936@ada.edu.az</a>
             </div>
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-xl bg-accent/15 flex items-center justify-center">

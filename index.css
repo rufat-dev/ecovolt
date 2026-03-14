@@ -100,4 +100,15 @@
       scroll-behavior: auto;
     }
   }
+
+  @media (max-width: 768px) {
+    html,
+    body,
+    #root {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      overscroll-behavior-x: none;
+    }
+  }
 }
