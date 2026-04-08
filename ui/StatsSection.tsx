@@ -68,8 +68,8 @@ const StatsSection = ({ lang }: StatsSectionProps) => {
         {
           icon: Battery,
           number: STATS_VALUES.batteriesCollected,
-          suffix: "+",
-          label: "Batteries Collected",
+          suffix: "+kg",
+          label: "Of Batteries Collected",
           desc: "Across all campus collection points in the first pilot month",
         },
         {
