@@ -14,14 +14,14 @@ export const CAMPUS_POINTS: CampusPoint[] = [
   {
     id: "A-building",
     names: { en: "A Building", az: "A Binası" },
-    count: 10,
+    count: 9,
     x: "22%",
     y: "36%",
   },
   {
     id: "B-building",
     names: { en: "B Building", az: "B Binası" },
-    count: 10,
+    count: 11,
     x: "43.4%",
     y: "36%",
   },
@@ -49,7 +49,7 @@ export const CAMPUS_POINTS: CampusPoint[] = [
   {
     id: "G-building",
     names: { en: "G Building", az: "G Binası" },
-    count: 5,
+    count: 0,
     x: "51%",
     y: "66.3%",
   },
@@ -63,7 +63,7 @@ export const CAMPUS_POINTS: CampusPoint[] = [
   {
     id: "F-building",
     names: { en: "F Building", az: "F Binası" },
-    count: 4,
+    count: 0,
     x: "63.8%",
     y: "65.7%",
   },

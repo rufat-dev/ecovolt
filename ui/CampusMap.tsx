@@ -101,7 +101,7 @@ const CampusMap = ({ lang }: CampusMapProps) => {
           ))}
 
           <div className="rounded-2xl border border-border bg-card px-4 py-4 mt-2">
-            <p className="font-display text-3xl font-bold text-accent">{TOTAL_BATTERIES.toLocaleString()}</p>
+            <p className="font-display text-3xl font-bold text-accent">{TOTAL_BATTERIES.toLocaleString()}+ kg</p>
             <p className="text-xs text-muted-foreground mt-1">{labels[lang].totalLabel}</p>
           </div>
         </div>
